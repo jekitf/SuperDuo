@@ -99,6 +99,12 @@ public class BarcodeCaptureActivity extends ActionBarActivity implements Surface
     @Override
     public Tracker<Barcode> create(Barcode barcode) {
         //Once we have an BARCODE, start a book intent
+        for (int i=0;i<barcode.displayValue.length();i++)
+        {
+            char T=barcode.displayValue.charAt(i);
+            if (T<'0' || T>'9')
+                return null;
+        }
         Intent returnIntent = new Intent();
         returnIntent.putExtra("BARCODE",barcode.displayValue);
         setResult(RESULT_OK,returnIntent);
