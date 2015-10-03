@@ -39,9 +39,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
 
     private String mScanFormat = "Format:";
     private String mScanContents = "Contents:";
-
-
-
+    
     public AddBook(){
     }
 
@@ -102,13 +100,9 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
                 // Hint: Use a Try/Catch block to handle the Intent dispatch gracefully, if you
                 // are using an external app.
                 //when you're done, remove the toast below.
-                Context context = getActivity();
-                CharSequence text = "This button should let you scan a book for its barcode!";
-                int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-
+                Intent intent = new Intent(getActivity(), BarcodeCaptureActivity.class);
+                startActivityForResult(intent, BarcodeCaptureActivity.BARCODE_CAPTURE_INTENT);
             }
         });
 
@@ -211,5 +205,21 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         activity.setTitle(R.string.scan);
+    }
+
+    @Override
+    public void onActivityResult (int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode==BarcodeCaptureActivity.BARCODE_CAPTURE_INTENT)
+        {
+            if (resultCode==Activity.RESULT_OK)
+            {
+                if (data!=null)
+                {
+                    ean.setText(data.getStringExtra("BARCODE"));
+                }
+            }
+
+        }
     }
 }
