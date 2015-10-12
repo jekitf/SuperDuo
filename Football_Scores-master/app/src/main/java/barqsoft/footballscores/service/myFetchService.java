@@ -41,7 +41,6 @@ public class myFetchService extends IntentService
     {
         getData("n2");
         getData("p2");
-
         return;
     }
 
@@ -115,7 +114,7 @@ public class myFetchService extends IntentService
                 if (matches.length() == 0) {
                     //if there is no data, call the function on dummy data
                     //this is expected behavior during the off season.
-                    processJSONdata(getString(R.string.dummy_data), getApplicationContext(), false);
+                    //processJSONdata(getString(R.string.dummy_data), getApplicationContext(), false);
                     return;
                 }
 
@@ -133,6 +132,9 @@ public class myFetchService extends IntentService
     }
     private void processJSONdata (String JSONdata,Context mContext, boolean isReal)
     {
+        //just for developing
+        //JSONdata=JSONdata.replace("2015-10-16","2015-10-12");
+
         //JSON data
         // This set of league codes is for the 2015/2016 season. In fall of 2016, they will need to
         // be updated. Feel free to use the codes
@@ -196,7 +198,8 @@ public class myFetchService extends IntentService
                         League.equals(SERIE_A)             ||
                         League.equals(BUNDESLIGA1)         ||
                         League.equals(BUNDESLIGA2)         ||
-                        League.equals(PRIMERA_DIVISION)     )
+                        League.equals(PRIMERA_DIVISION)    ||
+                        true) //TODO REMOVE FOR PRODUCTION
                 {
                     match_id = match_data.getJSONObject(LINKS).getJSONObject(SELF).
                             getString("href");
