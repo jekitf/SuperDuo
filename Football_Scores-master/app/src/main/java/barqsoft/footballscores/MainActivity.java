@@ -1,11 +1,13 @@
 package barqsoft.footballscores;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends ActionBarActivity
 {
@@ -31,6 +33,11 @@ public class MainActivity extends ActionBarActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
+        //JUST for test
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+//        }
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
