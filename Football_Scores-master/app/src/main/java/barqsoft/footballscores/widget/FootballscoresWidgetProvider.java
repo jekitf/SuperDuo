@@ -7,13 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.TaskStackBuilder;
-import android.widget.ListView;
 import android.widget.RemoteViews;
 
 import barqsoft.footballscores.MainActivity;
 import barqsoft.footballscores.R;
-import barqsoft.footballscores.scoresAdapter;
 
 /**
  * Created by PC on 04.10.2015.
